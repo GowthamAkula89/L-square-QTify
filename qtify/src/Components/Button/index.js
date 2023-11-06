@@ -1,10 +1,10 @@
 import React from "react";
-import Button from "@mui/material/Button";
-const FeedbackButton= ()=>{
+import "./Button.css";
+const FeedbackButton= ({children})=>{
     return(
-        <Button variant="contained">
-            Give Feedback
-        </Button>
+        <button className="feedbackBtn">
+            {children}
+        </button>
     )
 }
 export default FeedbackButton;

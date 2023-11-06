@@ -1,11 +1,12 @@
 import FeedbackButton from "../Button";
 import SearchBox from "../SearchBox";
+import "./Navbar.css";
 const Navbar =()=>{
     return(
-        <div>
-            <h1>logo</h1>
+        <div className="navBar">
+            <img src="qtifyLogo.png" alt=""/>
             <SearchBox/>
-            <FeedbackButton/>
+            <FeedbackButton children={"Give Feedbacks"}/>
         </div>
         
     )
