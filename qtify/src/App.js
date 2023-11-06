@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
+import Navbar from './Components/Navbar';
+import SearchBox1 from './Components/SearchBox';
 function App() {
   return (
     <div className="App">
-      <h1>Hi</h1>
+      <SearchBox1/>
+      <Navbar/>
     </div>
   );
 }
