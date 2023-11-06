@@ -6,7 +6,7 @@ const Navbar =()=>{
         <div className="navBar">
             <img src="qtifyLogo.png" alt=""/>
             <SearchBox/>
-            <FeedbackButton children={"Give Feedbacks"}/>
+            <FeedbackButton children={"Give Feedback"}/>
         </div>
         
     )
