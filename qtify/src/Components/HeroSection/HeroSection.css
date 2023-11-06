@@ -1,0 +1,21 @@
+.hero-section{
+    width: 100vw;
+    height: 270px;
+    background-color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-img{
+    width: 212px;
+    height: 212px;
+}
+.hero-text{
+    color: var(--color-white);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
