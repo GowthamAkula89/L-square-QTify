@@ -1,0 +1,18 @@
+/* .top-albums{
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.top-albums-heading{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-white);
+    text-align: start;
+    margin-bottom: 18px;
+} */
+.section{
+    padding: 32px;
+    width: 100%;
+}

@@ -1,0 +1,17 @@
+.sub-section{
+    margin-bottom: 32px;
+}
+.section-albums{
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    gap: 41px;
+    flex-wrap: wrap;
+}
+.section-albums-heading{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-white);
+    text-align: start;
+    margin-bottom: 18px;
+}

@@ -1,15 +1,17 @@
 import "./CardComponent.css";
-const CardComponent=()=>{
+const CardComponent=({album})=>{
     return(
-        <div className="card">
-            <img className="card-img" src="card_img.png" alt=""/>
-            <div className="follow-container">
-                <div className="follows">
-                100M Follow
+        <div className="card-container">
+            <div className="card-details">
+                <img className="card-img" src={album.image} alt=""/>
+                <div className="follow-container">
+                    <div className="follows">
+                    {album.follows} Follows
+                    </div>
                 </div>
             </div>
             <p className="card-title">
-            New Bollywood
+            {album.title}
             </p>
         </div>
     )
