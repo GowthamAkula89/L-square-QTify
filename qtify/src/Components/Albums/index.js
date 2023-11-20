@@ -23,8 +23,8 @@ const Albums=()=>{
     },[])
     return(
         <div className="section">
-            <AlbumsType  albums={topAlbums} title={"Top Albums"}/>
-            <AlbumsType  albums={newAlbums} title={"New Albums"}/>
+            <AlbumsType  albums={topAlbums} title={"Top Albums"} albumsType={"top"}/>
+            {/* <AlbumsType  albums={newAlbums} title={"New Albums"} albumsType={"new"}/> */}
         </div>
         
     )

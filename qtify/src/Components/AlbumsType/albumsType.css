@@ -1,6 +1,18 @@
 .sub-section{
     margin-bottom: 32px;
 }
+.section-heading{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+.section-toggle-button{
+    font-weight: 600;
+    font-size: 20px;
+    background-color: var(--color-black);
+    color: var(--color-primary);
+    cursor: pointer;
+}
 .section-albums{
     display: flex;
     flex: 1;
@@ -13,5 +25,4 @@
     font-weight: 600;
     color: var(--color-white);
     text-align: start;
-    margin-bottom: 18px;
 }
