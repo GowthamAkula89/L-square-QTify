@@ -1,0 +1,19 @@
+.filter-section{
+    padding: 0px 25px 0px 32px;
+    width: 100%;
+    width: 100%;
+}
+.filter-sub-section{
+    padding-bottom: 24px;
+}
+.filter-section-heading{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-white);
+    text-align: start;
+}
+.tab{
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: var(--color-white) !important;
+}

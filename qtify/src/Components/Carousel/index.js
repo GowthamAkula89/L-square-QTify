@@ -5,9 +5,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import "./carousel.css"
 import CardComponent from '../CardComponet';
-const Carousel=({albums,title})=>{
-    const albumsLen=albums.length;
-    console.log(albumsLen);
+const Carousel=({data,title})=>{
     return(
         <div className='carousel-container'>
                 <Swiper
@@ -22,9 +20,9 @@ const Carousel=({albums,title})=>{
                     }}
                     virtual
                 >
-                    {albums.map((album) => (
-                    <SwiperSlide key={album.id}>
-                        <CardComponent album={album}/>
+                    {data.map((item) => (
+                    <SwiperSlide key={item.id}>
+                        <CardComponent item={item}/>
                     </SwiperSlide>
                     ))}
                 </Swiper>

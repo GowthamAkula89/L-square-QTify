@@ -26,8 +26,6 @@ const Albums=()=>{
             <AlbumsType  albums={topAlbums} title={"Top Albums"} albumsType={"top-albums"}/>
             <AlbumsType  albums={newAlbums} title={"New Albums"} albumsType={"new-albums"}/>
         </div>
-        
     )
-
 }
 export default Albums;

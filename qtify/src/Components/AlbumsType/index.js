@@ -14,11 +14,11 @@ const AlbumsType=({albums,title,albumsType})=>{
                     {isCollapsed ? "Show all": "Collapse"}
                 </h1>
             </div>
-            {isCollapsed ? <Carousel albums={albums} title={albumsType}/> : 
+            {isCollapsed ? <Carousel data={albums} title={albumsType}/> : 
             <div className="section-albums">
                 {albums.map((album) => (
                     <div key={album.id}>
-                    <CardComponent album={album} />
+                    <CardComponent item={album} />
                     </div>
                 ))}
             </div>}

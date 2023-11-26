@@ -1,17 +1,17 @@
 import "./CardComponent.css";
-const CardComponent=({album})=>{
+const CardComponent=({item})=>{
     return(
         <div className="card-container">
             <div className="card-details">
-                <img className="card-img" src={album.image} alt=""/>
+                <img className="card-img" src={item.image} alt=""/>
                 <div className="follow-container">
                     <div className="follows">
-                    {album.follows} Follows
+                    {item.follows} Follows
                     </div>
                 </div>
             </div>
             <p className="card-title">
-            {album.title}
+            {item.title}
             </p>
         </div>
     )
