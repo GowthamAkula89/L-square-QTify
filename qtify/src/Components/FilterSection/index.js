@@ -12,7 +12,7 @@ const FilterSection = () => {
     const [genres, setGenres] = useState([]);
     const [selectedTab, setSelectedTab] = useState(0);
     const [filteredSongs, setFilteredSongs] = useState([]);
-
+    console.log(songs);
     useEffect(() => {
         const fetchData = async () => {
             try {

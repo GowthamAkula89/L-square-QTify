@@ -22,7 +22,7 @@ const Carousel=({data,title})=>{
                 >
                     {data.map((item) => (
                     <SwiperSlide key={item.id}>
-                        <CardComponent item={item}/>
+                        <CardComponent item={item} title={title}/>
                     </SwiperSlide>
                     ))}
                 </Swiper>
