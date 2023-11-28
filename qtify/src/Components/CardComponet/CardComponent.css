@@ -2,6 +2,7 @@
     width: 159px;
     height: 234px;
     background-color: var(--color-black);
+    cursor: pointer;
 }
 .card-details{
     border-radius: 10px;
@@ -11,7 +12,7 @@
     width: 159px;
     height: 170px;
 }
-.follows{
+.follows-likes{
     flex: 1;
     width: 85px;
     height: 23px;
@@ -23,7 +24,7 @@
     font-weight: 400;
 
 }
-.follow-container{
+.follow-like-container{
     padding: 6px;
     height: 35px;
     background-color: var(--color-white);
@@ -34,4 +35,8 @@
     color: var(--color-white);
     text-align: left;
     padding-top: 6px;
+}
+.album-song-count{
+    color: var(--color-white);
+    /* position: absolute; */
 }

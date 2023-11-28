@@ -13,6 +13,7 @@
     color: var(--color-primary);
     cursor: pointer;
 }
+
 .section-albums{
     display: flex;
     flex: 1;
