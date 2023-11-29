@@ -4,7 +4,6 @@ import "./albumsType.css";
 import Carousel from "../Carousel";
 const AlbumsType=({albums,title,albumsType})=>{
     const [isCollapsed,setIsCollapsed]=useState(true);
-    console.log(albums)
     return(
         <div className="sub-section">
             <div className="section-heading">
@@ -15,14 +14,16 @@ const AlbumsType=({albums,title,albumsType})=>{
                     {isCollapsed ? "Show all": "Collapse"}
                 </h1>
             </div>
-            {isCollapsed ? <Carousel data={albums} title={albumsType}/> : 
-            <div className="section-albums">
-                {albums.map((album,index) => (
-                    <div key={album.id}>
-                    <CardComponent item={album} title={"album"} index={index}/>
-                    </div>
-                ))}
-            </div>}
+            <div>
+                {isCollapsed ? <Carousel data={albums} title={albumsType}/> : 
+                <div className="section-albums">
+                    {albums.map((album,index) => (
+                        <div key={album.id}>
+                        <CardComponent item={album} title={"album"} index={index}/>
+                        </div>
+                    ))}
+                </div>}
+            </div>
         </div>
     )
 }

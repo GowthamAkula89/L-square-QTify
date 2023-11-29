@@ -10,9 +10,7 @@ const Carousel=({data,title})=>{
         <div className='carousel-container'>
                 <Swiper
                     modules={[Virtual, Navigation, Pagination]}
-                    // onSwiper={setSwiperRef}
-                    slidesPerView={7}
-                    // centeredSlides={true}
+                    slidesPerView={8}
                     spaceBetween={40}
                     navigation= {{
                         nextEl: `.arrow-next-${title}`,
