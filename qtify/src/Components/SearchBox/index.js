@@ -26,7 +26,7 @@ const SearchBox = ({allAlbums}) => {
         }
         const timer=setTimeout(()=>{
           performSearch(event.target.value)
-        },500)
+        },1000)
         setDebounceTimer(timer);
       };
     return (
