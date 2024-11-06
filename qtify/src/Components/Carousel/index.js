@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Virtual, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -11,6 +11,16 @@ const Carousel = ({ data, title }) => {
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
 
+    const prevButtonRef = useRef(null);
+    const nextButtonRef = useRef(null);
+    const swiperRef = useRef(null);
+
+    useEffect(() => {
+        if (swiperRef.current?.navigation) {
+            swiperRef.current.navigation.update();
+        }
+    }, [isBeginning, isEnd]);
+
     const updateNavigationButtons = (swiper) => {
         setIsBeginning(swiper.isBeginning);
         setIsEnd(swiper.isEnd);
@@ -22,13 +32,22 @@ const Carousel = ({ data, title }) => {
                 modules={[Virtual, Navigation, Pagination]}
                 slidesPerView={7}
                 spaceBetween={40}
-                navigation={{
-                    nextEl: `.arrow-next-${title}`,
-                    prevEl: `.arrow-prev-${title}`,
+                onBeforeInit={(swiper) => {
+                    swiperRef.current = swiper;
+                    swiper.params.navigation.prevEl = prevButtonRef.current;
+                    swiper.params.navigation.nextEl = nextButtonRef.current;
+                }}
+                onSlideChange={updateNavigationButtons}
+                onInit={(swiper) => {
+                    swiper.navigation.init();
+                    setTimeout(() => {
+                        if (swiper.navigation) {
+                            swiper.navigation.update();
+                            updateNavigationButtons(swiper);
+                        }
+                    }, 50); 
                 }}
                 virtual
-                onSlideChange={updateNavigationButtons}
-                onInit={(swiper) => updateNavigationButtons(swiper)}
             >
                 {data.map((item) => (
                     <SwiperSlide key={item.id}>
@@ -36,13 +55,20 @@ const Carousel = ({ data, title }) => {
                     </SwiperSlide>
                 ))}
             </Swiper>
+            
             {!isBeginning && (
-                <div className={`arrow-prev-${title} arrow-prev arrow`}>
+                <div 
+                    ref={prevButtonRef} 
+                    className={`arrow-prev-${title} arrow-prev arrow`}
+                >
                     <img src='prev.png' alt='prev' />
                 </div>
             )}
             {!isEnd && (
-                <div className={`arrow-next-${title} arrow-next arrow`}>
+                <div 
+                    ref={nextButtonRef} 
+                    className={`arrow-next-${title} arrow-next arrow`}
+                >
                     <img src='next.png' alt='next' />
                 </div>
             )}
