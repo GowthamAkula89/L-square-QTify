@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CardComponent from "../CardComponent";
+import CardComponent from "../CardComponet"
 import "./albumsType.css";
 import Carousel from "../Carousel";
 
