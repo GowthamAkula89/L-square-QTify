@@ -22,12 +22,13 @@ const AlbumsType = ({ albums, title, albumsType }) => {
                 ) : (
                     <div className="section-albums">
                         {albums.map((album, index) => (
-                            <div key={album.id} className="album-title">
+                            <div key={album.id} className="album-title" data-testid={`album-title-${album.id}`}>
                                 <CardComponent item={album} title={"album"} index={index} />
                                 <p>{album.title}</p>
                             </div>
                         ))}
                     </div>
+                
                 )}
             </div>
         </div>
