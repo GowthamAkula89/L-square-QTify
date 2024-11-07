@@ -16,7 +16,7 @@ const Carousel = ({ data, title }) => {
   const swiperRef = useRef(null);
 
   useEffect(() => {
-    const updateNavigationButtons = () => {
+    const updateNavigation = () => {
       if (swiperRef.current) {
         const swiper = swiperRef.current;
         swiper.navigation.update();
@@ -25,10 +25,10 @@ const Carousel = ({ data, title }) => {
       }
     };
 
-    setTimeout(() => {
-      updateNavigationButtons();
-    }, 100);
-  }, [data.length]);
+    if (swiperRef.current) {
+      updateNavigation();
+    }
+  }, [data.length]); // Run whenever data changes
 
   return (
     <div className='carousel-container'>
@@ -41,13 +41,16 @@ const Carousel = ({ data, title }) => {
           swiper.params.navigation.prevEl = prevButtonRef.current;
           swiper.params.navigation.nextEl = nextButtonRef.current;
         }}
-        onSlideChange={(swiper) => {
+        onSwiper={(swiper) => {
+          // Ensure swiper initializes correctly
+          swiper.navigation.init();
+          swiper.navigation.update();
           setIsBeginning(swiper.isBeginning);
           setIsEnd(swiper.isEnd);
         }}
-        onInit={(swiper) => {
-          swiper.navigation.init();
-          swiper.navigation.update();
+        onSlideChange={(swiper) => {
+          setIsBeginning(swiper.isBeginning);
+          setIsEnd(swiper.isEnd);
         }}
         virtual
       >
