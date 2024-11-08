@@ -43,13 +43,13 @@ function App() {
       <HeroSection/>
       <Albums topAlbums={topAlbums} newAlbums={newAlbums}/>
       <FilterSection title={"Songs"} data={filteredSongs} filters={genres}
-      executeFilters = {(genre) => {
-        if (genre === "all"){
-            setFilteredSongs(songs);
-        } else{
-            const filteredData = songs.filter(song => song.genre.key === genre);
-            setFilteredSongs(filteredData);
-        }
+        executeFilters = {(genre) => {
+          if (genre === "all"){
+              setFilteredSongs(songs);
+          } else{
+              const filteredData = songs.filter(song => song.genre.key === genre);
+              setFilteredSongs(filteredData);
+          }
       }}/>
       <FAQ/>
     </div>

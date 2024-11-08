@@ -1,80 +1,59 @@
 import { useState, useRef, useEffect } from 'react';
-import { Virtual, Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import './carousel.css';
-import CardComponent from '../CardComponet';
+import CardComponent from '../CardComponent';
 
 const Carousel = ({ data, title }) => {
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef(null);
 
-  const prevButtonRef = useRef(null);
-  const nextButtonRef = useRef(null);
-  const swiperRef = useRef(null);
+  const itemsPerView = 7;
+  const totalItems = data.length;
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      Math.min(prevIndex + 1, totalItems - itemsPerView)
+    );
+  };
 
   useEffect(() => {
-    const updateNavigation = () => {
-      if (swiperRef.current) {
-        const swiper = swiperRef.current;
-        swiper.navigation.update();
-        setIsBeginning(swiper.isBeginning);
-        setIsEnd(swiper.isEnd);
-      }
-    };
-
-    if (swiperRef.current) {
-      updateNavigation();
+    if (carouselRef.current && data.length > 0) {
+      const itemWidth = carouselRef.current.children[0]?.offsetWidth + 41 || 0;
+      carouselRef.current.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
     }
-  }, [data.length]); // Run whenever data changes
+  }, [currentIndex, data.length]);
+  
 
   return (
     <div className='carousel-container'>
-      <Swiper
-        modules={[Virtual, Navigation, Pagination]}
-        slidesPerView={7}
-        spaceBetween={40}
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper;
-          swiper.params.navigation.prevEl = prevButtonRef.current;
-          swiper.params.navigation.nextEl = nextButtonRef.current;
-        }}
-        onSwiper={(swiper) => {
-          // Ensure swiper initializes correctly
-          swiper.navigation.init();
-          swiper.navigation.update();
-          setIsBeginning(swiper.isBeginning);
-          setIsEnd(swiper.isEnd);
-        }}
-        onSlideChange={(swiper) => {
-          setIsBeginning(swiper.isBeginning);
-          setIsEnd(swiper.isEnd);
-        }}
-        virtual
-      >
-        {data.map((item) => (
-          <SwiperSlide key={item.id}>
-            <CardComponent item={item} title={title} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      <div
-        ref={prevButtonRef}
+      <div className='carousel-wrapper'>
+        <div className='carousel' ref={carouselRef}>
+          {data.map((item) => (
+            <div key={item.id} className='carousel-slide'>
+              <CardComponent item={item} title={title} />
+            </div>
+          ))}
+        </div>
+      </div>
+      <button
+        onClick={prevSlide}
         className={`arrow-prev-${title} arrow-prev arrow`}
-        style={{ visibility: isBeginning ? 'hidden' : 'visible' }}
+        style={{ visibility: currentIndex === 0 ? 'hidden' : 'visible' }}
       >
         <img src='prev.png' alt='prev' />
-      </div>
-      <div
-        ref={nextButtonRef}
+      </button>
+      <button
+        onClick={nextSlide}
         className={`arrow-next-${title} arrow-next arrow`}
-        style={{ visibility: isEnd ? 'hidden' : 'visible' }}
+        style={{
+          visibility: currentIndex >= totalItems - itemsPerView ? 'hidden' : 'visible',
+        }}
       >
         <img src='next.png' alt='next' />
-      </div>
+      </button>
     </div>
   );
 };

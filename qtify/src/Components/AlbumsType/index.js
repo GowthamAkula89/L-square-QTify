@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CardComponent from "../CardComponet"
+import CardComponent from "../CardComponent"
 import "./albumsType.css";
 import Carousel from "../Carousel";
 
@@ -17,19 +17,14 @@ const AlbumsType = ({ albums, title, albumsType }) => {
                 </h1>
             </div>
             <div>
-                {isCollapsed ? (
-                    <Carousel data={albums} title={albumsType} />
-                ) : (
-                    <div className="section-albums">
-                        {albums.map((album, index) => (
-                            <div key={album.id} className="album-title" data-testid={`album-title-${album.id}`}>
-                                <CardComponent item={album} title={"album"} index={index} />
-                                <p>{album.title}</p>
-                            </div>
-                        ))}
-                    </div>
-                
-                )}
+                {isCollapsed ? <Carousel data={albums} title={albumsType}/> : 
+                <div className="section-albums">
+                    {albums.map((album,index) => (
+                        <div key={album.id}>
+                        <CardComponent item={album} title={"album"} index={index}/>
+                        </div>
+                    ))}
+                </div>}
             </div>
         </div>
     );
