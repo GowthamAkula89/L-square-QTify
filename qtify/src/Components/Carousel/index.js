@@ -41,7 +41,7 @@ const Carousel = ({ data, title }) => {
       <button
         onClick={prevSlide}
         className={`arrow-prev-${title} arrow-prev arrow`}
-        style={{ visibility: currentIndex === 0 ? 'hidden' : 'visible' }}
+        style={{}}
       >
         <img src='prev.png' alt='prev' />
       </button>
@@ -49,7 +49,7 @@ const Carousel = ({ data, title }) => {
         onClick={nextSlide}
         className={`arrow-next-${title} arrow-next arrow`}
         style={{
-          visibility: currentIndex >= totalItems - itemsPerView ? 'hidden' : 'visible',
+          
         }}
       >
         <img src='next.png' alt='next' />
